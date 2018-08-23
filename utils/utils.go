@@ -129,3 +129,13 @@ func MakeCSV(points [][]float64) {
 		CheckError("Cannot write to file", err)
 	}
 }
+
+func MultiplySlice(sli []int) int {
+	product := 1
+
+	for _, num := range sli {
+		product *= num
+	}
+
+	return product
+}
