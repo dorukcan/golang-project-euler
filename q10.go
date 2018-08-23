@@ -6,10 +6,21 @@ Find the sum of all the primes below two million.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"golang-project-euler/utils"
+)
 
 func solveQ10(target int) int {
-	return 1
+	result := 0
+
+	for num := 2; num < target; num++ {
+		if utils.IsPrime(num) {
+			result += num
+		}
+	}
+
+	return result
 }
 
 func main() {
