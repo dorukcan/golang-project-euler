@@ -1,6 +1,12 @@
 package utils
 
-import "math"
+import (
+	"encoding/csv"
+	"log"
+	"math"
+	"os"
+	"strconv"
+)
 
 func IsPrime(num int) bool {
 	maxVal := int(math.Sqrt(float64(num))) + 1
@@ -77,4 +83,49 @@ func IsPalindrome(num int) bool {
 	}
 
 	return true
+}
+
+func IsNaturalNumber(num float64) bool {
+	return false
+}
+
+func BoardColumn(board [][]float64, columnIndex int) []float64 {
+	column := make([]float64, 0)
+	for _, row := range board {
+		column = append(column, row[columnIndex])
+	}
+	return column
+}
+func CheckError(message string, err error) {
+	if err != nil {
+		log.Fatal(message, err)
+	}
+}
+func FloatToString(inputNum float64) string {
+	// to convert a float number to a string
+	return strconv.FormatFloat(inputNum, 'f', 3, 64)
+}
+
+func SliceFtoa(sa []float64) []string {
+	si := make([]string, 0, len(sa))
+
+	for _, a := range sa {
+		i := FloatToString(a)
+		si = append(si, i)
+	}
+
+	return si
+}
+func MakeCSV(points [][]float64) {
+	file, err := os.Create("result.csv")
+	CheckError("Cannot create file", err)
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	for _, value := range points {
+		err := writer.Write(SliceFtoa(value))
+		CheckError("Cannot write to file", err)
+	}
 }
