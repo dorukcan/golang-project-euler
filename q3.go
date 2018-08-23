@@ -6,9 +6,7 @@ import (
 	"math"
 )
 
-func main() {
-	num := 600851475143
-
+func solveQ3(num int) int {
 	maxDiv := int(math.Sqrt(float64(num))) + 1
 	maxVal := 0
 
@@ -18,5 +16,10 @@ func main() {
 		}
 	}
 
-	fmt.Println(maxVal)
+	return maxVal
+}
+
+func main() {
+	fmt.Println(solveQ3(13195))
+	fmt.Println(solveQ3(600851475143))
 }

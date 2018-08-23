@@ -6,7 +6,7 @@ import (
 	"math"
 )
 
-func solve(limit int) int {
+func solveQ5(limit int) int {
 	numbers := utils.MakeRange(1, limit)
 
 	result := 1
@@ -38,6 +38,6 @@ func solve(limit int) int {
 }
 
 func main() {
-	fmt.Println(solve(10))
-	fmt.Println(solve(20))
+	fmt.Println(solveQ5(10))
+	fmt.Println(solveQ5(20))
 }

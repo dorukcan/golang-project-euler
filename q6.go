@@ -5,9 +5,7 @@ import (
 	"math"
 )
 
-func main() {
-	target := 100
-
+func solveQ6(target int) int {
 	sumOfSquares := 0
 	squareOfSum := 0
 
@@ -18,5 +16,9 @@ func main() {
 
 	squareOfSum = int(math.Pow(float64(squareOfSum), 2))
 
-	fmt.Println(squareOfSum - sumOfSquares)
+	return squareOfSum - sumOfSquares
+}
+
+func main() {
+	fmt.Println(solveQ6(100))
 }

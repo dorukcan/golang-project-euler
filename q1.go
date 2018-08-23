@@ -2,8 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
-	target := 1000
+func solveQ1(target int) int {
 	total := 0
 
 	for num := 2; num < target; num++ {
@@ -16,5 +15,10 @@ func main() {
 		}
 	}
 
-	fmt.Println(total)
+	return total
+}
+
+func main() {
+	fmt.Println(solveQ1(10))
+	fmt.Println(solveQ1(1000))
 }

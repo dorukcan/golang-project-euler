@@ -6,9 +6,7 @@ import (
 	"math"
 )
 
-func main() {
-	digitCount := 3
-
+func solveQ4(digitCount int) int {
 	start := math.Pow10(digitCount - 1)
 	end := math.Pow10(digitCount) - 1
 
@@ -26,5 +24,10 @@ func main() {
 		}
 	}
 
-	fmt.Println(maxVal)
+	return maxVal
+}
+
+func main() {
+	fmt.Println(solveQ4(2))
+	fmt.Println(solveQ4(3))
 }
