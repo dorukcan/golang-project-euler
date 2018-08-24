@@ -179,15 +179,20 @@ func PadStringWithZero(value string, zeroCount int) string {
     return result
 }
 
-func AddStringsAsNumbers(first string, second string) string {
-    result := ""
-
+func OrderByLength(first string, second string) (string, string){
     if len(second) > len(first) {
         temp := first
         first = second
         second = temp
     }
 
+    return first, second
+}
+
+func AddStringsAsNumbers(first string, second string) string {
+    result := ""
+
+    first, second = OrderByLength(first, second)
     second = PadStringWithZero(second, len(first)-len(second))
 
     carry := 0
@@ -214,3 +219,37 @@ func AddStringsAsNumbers(first string, second string) string {
 
     return Reverse(result)
 }
+
+func MultiplyStringsAsNumbers(first string, second string) string {
+    result := ""
+
+    first, second = OrderByLength(first, second)
+
+    for index := range second {
+        digit := GetDigitFromString(second, index)
+        middleResult := ""
+
+        for x := 0; x < digit; x++ {
+            middleResult = AddStringsAsNumbers(middleResult, first)
+        }
+
+        for x := 0; x < index; x++ {
+            middleResult += "0"
+        }
+
+        result = AddStringsAsNumbers(result, middleResult)
+    }
+
+    return result
+}
+
+func PowStringsAsNumbers(first string, second int) string {
+    result := "1"
+
+    for x := 0; x < second; x++ {
+        result = MultiplyStringsAsNumbers(result, first)
+    }
+
+    return result
+}
+
