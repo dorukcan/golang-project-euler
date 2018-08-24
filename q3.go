@@ -8,8 +8,9 @@ package main
 
 import (
 	"fmt"
-	"golang-project-euler/utils"
 	"math"
+
+	"golang-project-euler/utils"
 )
 
 func solveQ3(num int) int {

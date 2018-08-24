@@ -8,6 +8,7 @@ package main
 
 import (
 	"fmt"
+
 	"golang-project-euler/utils"
 )
 
