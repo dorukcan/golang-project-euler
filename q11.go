@@ -31,7 +31,6 @@ package main
 
 import (
 	"fmt"
-	"golang-project-euler/utils"
 )
 
 func solveQ11(numberCount int) int {
@@ -62,18 +61,50 @@ func solveQ11(numberCount int) int {
 
 	for rowIndex, row := range grid {
 		for colIndex := range row {
-			slices := [][]int{
-				grid[rowIndex : rowIndex+numberCount][colIndex],
-				grid[rowIndex][colIndex : colIndex+numberCount],
-			}
+			maxRowIndex := rowIndex + numberCount
+			maxColIndex := colIndex + numberCount
 
-			for _, sli := range slices {
-				product := utils.MultiplySlice(sli)
+			if maxRowIndex <= len(grid) {
+				product := 1
+
+				for x := rowIndex; x < maxRowIndex; x++ {
+					product *= grid[x][colIndex]
+				}
+
 				if product > maxVal {
 					maxVal = product
 				}
 			}
 
+			if maxColIndex <= len(row) {
+				product := 1
+
+				for y := colIndex; y < maxColIndex; y++ {
+					product *= grid[rowIndex][y]
+				}
+
+				if product > maxVal {
+					maxVal = product
+				}
+			}
+
+			if maxRowIndex <= len(grid) && maxColIndex <= len(row) {
+				product := 1
+
+				x := rowIndex
+				y := colIndex
+
+				for x < maxRowIndex && y < maxColIndex {
+					product *= grid[x][y]
+
+					x++
+					y++
+				}
+
+				if product > maxVal {
+					maxVal = product
+				}
+			}
 		}
 	}
 
