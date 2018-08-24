@@ -216,6 +216,7 @@ func solveQ13(target int) string {
 	}
 
 	total := ""
+
 	for _, num := range numbers {
 		total = utils.AddStringsAsNumbers(total, num)
 	}
