@@ -327,3 +327,12 @@ func NumberToWrittenForm(num int) string {
     return result
 }
 
+func FactorialNumberAsString(num int) string {
+    if num == 1 {
+        return "1"
+    }
+
+    return MultiplyStringsAsNumbers(
+        strconv.Itoa(num), FactorialNumberAsString(num-1))
+}
+
