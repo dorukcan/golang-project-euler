@@ -96,11 +96,13 @@ func BoardColumn(board [][]float64, columnIndex int) []float64 {
 	}
 	return column
 }
+
 func CheckError(message string, err error) {
 	if err != nil {
 		log.Fatal(message, err)
 	}
 }
+
 func FloatToString(inputNum float64) string {
 	// to convert a float number to a string
 	return strconv.FormatFloat(inputNum, 'f', 3, 64)
@@ -116,6 +118,7 @@ func SliceFtoa(sa []float64) []string {
 
 	return si
 }
+
 func MakeCSV(points [][]float64) {
 	file, err := os.Create("result.csv")
 	CheckError("Cannot create file", err)
@@ -138,4 +141,76 @@ func MultiplySlice(sli []int) int {
 	}
 
 	return product
+}
+
+func FindDivCount(num int) int {
+	divCount := 2
+
+	for div := 2; div <= int(math.Sqrt(float64(num))); div++ {
+		if num%div == 0 {
+			divCount += 2
+		}
+	}
+
+	return divCount
+}
+
+func Reverse(s string) string {
+	runes := []rune(s)
+
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+
+	return string(runes)
+}
+
+func GetDigitFromString(str string, position int) int {
+	digit, _ := strconv.Atoi(string(str[position]))
+	return digit
+}
+
+func PadStringWithZero(value string, zeroCount int) string {
+	result := value
+	for x := 0; x < zeroCount; x++ {
+		result = "0" + result
+	}
+
+	return result
+}
+
+func AddStringsAsNumbers(first string, second string) string {
+	result := ""
+
+	if len(second) > len(first) {
+		temp := first
+		first = second
+		second = temp
+	}
+
+	second = PadStringWithZero(second, len(first)-len(second))
+
+	carry := 0
+
+	for x := len(first) - 1; x >= 0; x-- {
+		firstDigit := GetDigitFromString(first, x)
+		secondDigit := GetDigitFromString(second, x)
+
+		currentSum := firstDigit + secondDigit + carry
+
+		if currentSum >= 10 {
+			carry = int(currentSum / 10)
+			currentSum = currentSum % 10
+		} else {
+			carry = 0
+		}
+
+		result += strconv.Itoa(currentSum)
+	}
+
+	if carry != 0 {
+		result += strconv.Itoa(carry)
+	}
+
+	return Reverse(result)
 }
