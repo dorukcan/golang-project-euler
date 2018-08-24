@@ -7,31 +7,31 @@ What is the 10 001st prime number?
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"golang-project-euler/utils"
+    "golang-project-euler/utils"
 )
 
 func solveQ7(targetIndex int) int {
-	num := 2
-	primeIndex := 1
+    num := 2
+    primeIndex := 1
 
-	for {
-		if utils.IsPrime(num) == true {
-			primeIndex++
-		}
+    for {
+        if utils.IsPrime(num) == true {
+            primeIndex++
+        }
 
-		if primeIndex > targetIndex {
-			break
-		}
+        if primeIndex > targetIndex {
+            break
+        }
 
-		num++
-	}
+        num++
+    }
 
-	return num
+    return num
 }
 
 func main() {
-	fmt.Println(solveQ7(6))
-	fmt.Println(solveQ7(10001))
+    fmt.Println(solveQ7(6))
+    fmt.Println(solveQ7(10001))
 }

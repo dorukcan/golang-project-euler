@@ -20,26 +20,26 @@ What is the value of the first triangle number to have over five hundred divisor
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"golang-project-euler/utils"
+    "golang-project-euler/utils"
 )
 
 func solveQ12(target int) int {
-	num := 0
+    num := 0
 
-	for x := 1; ; x++ {
-		num += x
+    for x := 1; ; x++ {
+        num += x
 
-		divCount := utils.FindDivCount(num)
+        divCount := utils.FindDivCount(num)
 
-		if divCount > target {
-			return num
-		}
-	}
+        if divCount > target {
+            return num
+        }
+    }
 }
 
 func main() {
-	fmt.Println(solveQ12(5))
-	fmt.Println(solveQ12(500))
+    fmt.Println(solveQ12(5))
+    fmt.Println(solveQ12(500))
 }

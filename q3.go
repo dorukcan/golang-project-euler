@@ -7,26 +7,26 @@ What is the largest prime factor of the number 600851475143 ?
 package main
 
 import (
-	"fmt"
-	"math"
+    "fmt"
+    "math"
 
-	"golang-project-euler/utils"
+    "golang-project-euler/utils"
 )
 
 func solveQ3(num int) int {
-	maxDiv := int(math.Sqrt(float64(num))) + 1
-	maxVal := 0
+    maxDiv := int(math.Sqrt(float64(num))) + 1
+    maxVal := 0
 
-	for div := 2; div < maxDiv; div++ {
-		if num%div == 0 && utils.IsPrime(div) == true {
-			maxVal = div
-		}
-	}
+    for div := 2; div < maxDiv; div++ {
+        if num%div == 0 && utils.IsPrime(div) == true {
+            maxVal = div
+        }
+    }
 
-	return maxVal
+    return maxVal
 }
 
 func main() {
-	fmt.Println(solveQ3(13195))
-	fmt.Println(solveQ3(600851475143))
+    fmt.Println(solveQ3(13195))
+    fmt.Println(solveQ3(600851475143))
 }

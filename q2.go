@@ -9,25 +9,25 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"golang-project-euler/utils"
+    "golang-project-euler/utils"
 )
 
 func solveQ2(limit int) int {
-	total := 0
-	numbers := utils.Fib(limit)
+    total := 0
+    numbers := utils.Fib(limit)
 
-	for _, num := range numbers {
-		if num%2 == 0 {
-			total += num
-		}
-	}
+    for _, num := range numbers {
+        if num%2 == 0 {
+            total += num
+        }
+    }
 
-	return total
+    return total
 }
 
 func main() {
-	fmt.Println(solveQ2(100))
-	fmt.Println(solveQ2(4000000))
+    fmt.Println(solveQ2(100))
+    fmt.Println(solveQ2(4000000))
 }

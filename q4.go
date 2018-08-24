@@ -7,34 +7,34 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 package main
 
 import (
-	"fmt"
-	"math"
+    "fmt"
+    "math"
 
-	"golang-project-euler/utils"
+    "golang-project-euler/utils"
 )
 
 func solveQ4(digitCount int) int {
-	start := math.Pow10(digitCount - 1)
-	end := math.Pow10(digitCount) - 1
+    start := math.Pow10(digitCount - 1)
+    end := math.Pow10(digitCount) - 1
 
-	maxVal := 0
+    maxVal := 0
 
-	for first := start; first <= end; first++ {
-		for second := start; second <= end; second++ {
-			product := int(first * second)
+    for first := start; first <= end; first++ {
+        for second := start; second <= end; second++ {
+            product := int(first * second)
 
-			if utils.IsPalindrome(product) == true {
-				if product > maxVal {
-					maxVal = product
-				}
-			}
-		}
-	}
+            if utils.IsPalindrome(product) == true {
+                if product > maxVal {
+                    maxVal = product
+                }
+            }
+        }
+    }
 
-	return maxVal
+    return maxVal
 }
 
 func main() {
-	fmt.Println(solveQ4(2))
-	fmt.Println(solveQ4(3))
+    fmt.Println(solveQ4(2))
+    fmt.Println(solveQ4(3))
 }

@@ -11,28 +11,28 @@ Find the product abc.
 package main
 
 import (
-	"fmt"
+    "fmt"
 )
 
 func solveQ9(target int) int {
-	var a float64 = 1
-	var b float64 = 1
-	var c float64
+    var a float64 = 1
+    var b float64 = 1
+    var c float64
 
-	var target_ = float64(target)
+    var target_ = float64(target)
 
-	for a = 1; a < 1000; a++ {
-		for b = 1; b < 1000; b++ {
-			c = (target_ / 2) - (a * b / target_)
-			if a*a+b*b == c*c && a+b+c == target_ {
-				return int(a * b * c)
-			}
-		}
-	}
+    for a = 1; a < 1000; a++ {
+        for b = 1; b < 1000; b++ {
+            c = (target_ / 2) - (a * b / target_)
+            if a*a+b*b == c*c && a+b+c == target_ {
+                return int(a * b * c)
+            }
+        }
+    }
 
-	return 0
+    return 0
 }
 
 func main() {
-	fmt.Println(solveQ9(1000))
+    fmt.Println(solveQ9(1000))
 }

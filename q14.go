@@ -19,9 +19,9 @@ package main
 import "fmt"
 
 func solveQ14(target int) int {
-	return 1
+    return 1
 }
 
 func main() {
-	fmt.Println(solveQ14(1000))
+    fmt.Println(solveQ14(1000))
 }
