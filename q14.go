@@ -19,9 +19,31 @@ package main
 import "fmt"
 
 func solveQ14(target int) int {
-    return 1
+    maxChain := 0
+    maxNum := 0
+
+    for num:=2;num<target;num++{
+        chainLength := 0
+
+        for temp := num; temp != 1;{
+            if temp % 2 == 0{
+                temp = temp / 2
+            } else {
+                temp = 3* temp + 1
+            }
+
+            chainLength++
+        }
+
+        if chainLength > maxChain{
+            maxChain = chainLength
+            maxNum = num
+        }
+    }
+
+    return maxNum
 }
 
 func main() {
-    fmt.Println(solveQ14(1000))
+    fmt.Println(solveQ14(1000000))
 }
