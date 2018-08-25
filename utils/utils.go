@@ -336,3 +336,39 @@ func FactorialNumberAsString(num int) string {
         strconv.Itoa(num), FactorialNumberAsString(num-1))
 }
 
+func ProperDivSum(num int) int {
+    result := 1
+
+    for div := 2; div <= int(math.Sqrt(float64(num))); div++ {
+        if num%div == 0 {
+            result += div
+
+            if div != num/div {
+                result += num/div
+            }
+        }
+    }
+
+    return result
+}
+
+func IsAbundantNumber(num int) bool {
+    if num < ProperDivSum(num) {
+        return true
+    }
+
+    return false
+}
+
+func UniqueSlice(intSlice []int) []int {
+    keys := make(map[int]bool)
+    var list []int
+    for _, entry := range intSlice {
+        if _, value := keys[entry]; !value {
+            keys[entry] = true
+            list = append(list, entry)
+        }
+    }
+    return list
+}
+

@@ -10,26 +10,18 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 package main
 
-import "fmt"
+import (
+    "fmt"
 
-func calcDivSum(num int) int {
-    result := 0
-
-    for div := 1; div <= num/2; div++ {
-        if num%div == 0 {
-            result += div
-        }
-    }
-
-    return result
-}
+    "golang-project-euler/utils"
+)
 
 func solveQ21(target int) int {
     result := 0
 
     for num := 2; num < target; num++ {
-        divSum := calcDivSum(num)
-        otherDivSum := calcDivSum(divSum)
+        divSum := utils.ProperDivSum(num)
+        otherDivSum := utils.ProperDivSum(divSum)
 
         if num == otherDivSum && num != divSum {
             result += num
